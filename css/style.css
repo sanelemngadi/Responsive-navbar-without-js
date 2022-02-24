@@ -1,0 +1,129 @@
+:root{
+    --primary-color:#495371;
+    --secondary-color:#98B4AA;
+    --tertiary-color:#000;
+}
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-color);
+    width: 100vw;
+    overflow-x: hidden !important;
+}
+nav, 
+header{
+    display: block;
+}
+
+header{
+    width: 100vw;
+    height: 50px;
+    background-color: var(--secondary-color);
+}
+
+.nav{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 0 2rem;
+}
+
+.nav__links{
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 85%;
+    height: calc(100vh - 50px);
+    background-color: var(--tertiary-color);
+    transform: translateX(100%);
+    transition: transform .3s ease-in-out;
+}
+
+.nav__links--item{
+    list-style-type: none;
+}
+
+.nav__links--item a{
+    text-decoration: none;
+    color: var(--secondary-color);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    font-weight: 500;
+}
+.nav__links--item a:hover{
+    color: var(--tertiary-color);
+    background-color: var(--secondary-color);
+}
+
+#toggle-nav:checked ~ .nav__links{
+    transform: translateX(0%);
+    transition: transform .3s ease-in-out;
+}
+
+#toggle-nav{
+    display: none;
+}
+
+.toggle-label{
+    display: block;
+    width: 2rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.toggle-label span{
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--tertiary-color);
+    position: relative;
+}
+.toggle-label span::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 7px;
+    width: 100%;
+    height: 4px;
+    background-color: var(--tertiary-color);
+}
+.toggle-label span::after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 7px;
+    width: 100%;
+    height: 4px;
+    background-color: var(--tertiary-color);
+}
+
+@media only screen and (min-width:767px){
+    .toggle-label{
+    display: none;
+    }
+    .nav__links{
+    all: initial;
+    display: flex;
+    }
+
+    .nav__links--item a{
+        color: var(--tertiary-color);
+    }
+    .nav__links--item a:hover{
+        color: var(--secondary-color);
+        background-color: var(--tertiary-color);
+    }
+}
